@@ -14,6 +14,19 @@ class Post extends Model
 
     // Como se llame nuestra tabla en la base de datos
     protected $table = 'posts';
+    protected $fillable = [
+        //Campos que quieras aceptar al momento de hacer asignacion masiva
+        'titulo',
+        'slug',
+        'categoria',
+        'contenido'
+    ];
+
+    protected $guarded = [
+        //Campos que no quieras considerar en la asignacion masiva
+    ];
+
+   
 
     protected function titulo(): Attribute
     { 

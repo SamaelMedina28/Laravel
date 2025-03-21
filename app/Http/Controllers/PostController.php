@@ -37,13 +37,15 @@ class PostController extends Controller
         // ! Creamos un registro en nuestra base de datos, al conecatrnos a la tabla Post
         // ^ le pasamos los datos que vienen en el request
         // ^ y los guardamos en la base de datos
-        $posts = new Post();
         // Se puede guardar el contenido de diferentes formas
+        /* $posts = new Post();
         $posts->titulo = $request->titulo;
         $posts->slug = $request->slug;
         $posts->contenido = request('contenido');
-        $posts->categoria = request()->categoria;
-        $posts->save();
+        $posts->categoria = request()->categoria; 
+        $posts->save();*/
+
+        Post::create($request->all()); // TODO Asignacion masiva (ocupa que en el modelo lo configuremos)
         return redirect()->route('posts.index');
 
         // ^ Diferentes formas de recuperar los datos mandados por un formulario
@@ -65,11 +67,12 @@ class PostController extends Controller
         // $posts = Post::find($id);
 
         // Se puede guardar el contenido de diferentes formas
-        $posts->titulo = $request->titulo;
+        /* $posts->titulo = $request->titulo;
         $posts->slug = $request->slug;
         $posts->contenido = request('contenido');
         $posts->categoria = request()->categoria;
-        $posts->save();
+        $posts->save(); */
+        $posts->update($request->all()); // TODO Actualizandolo con asignacion masiva
         return redirect()->route('posts.show',$posts);
     }
 

@@ -15,9 +15,11 @@ return new class extends Migration
             $table->id();
 
             $table->string('titulo');
+             
             $table->string('slug')->unique();
 
             $table->longText('contenido');
+
             $table->string('categoria');
 
 
