@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\StorePostRequest;
 use App\Models\Post;
 use Illuminate\Http\Request;
 
@@ -33,7 +34,7 @@ class PostController extends Controller
     }
 
     //? Metodo donde se procesara la informacion que s emando del formulario  !Aqui se creara!
-    public function store(Request $request){   
+    public function store(StorePostRequest $request){   
         // ! Creamos un registro en nuestra base de datos, al conecatrnos a la tabla Post
         // ^ le pasamos los datos que vienen en el request
         // ^ y los guardamos en la base de datos
@@ -45,21 +46,22 @@ class PostController extends Controller
         $posts->categoria = request()->categoria; 
         $posts->save();*/
 
-        $request->validate([
-            'titulo'=>'required|min:5|max:50',
-            'slug'=>'required|unique:posts',
-            'categoria'=>['required','min:8','max:30'],
-            'contenido'=>'required'
-        ]);
+        // ^ Diferentes formas de recuperar los datos mandados por un formulario
+        // return request()->all();
+        // return request('titulo');
+        // return request()->contenido;
+
+        // $request->validate([
+        //     'titulo'=>'required|min:5|max:50',
+        //     'slug'=>'required|unique:posts',
+        //     'categoria'=>['required','min:8','max:30'],
+        //     'contenido'=>'required'
+        // ]);
 
 
         Post::create($request->all()); // TODO Asignacion masiva (ocupa que en el modelo lo configuremos)
         return redirect()->route('posts.index');
 
-        // ^ Diferentes formas de recuperar los datos mandados por un formulario
-        // return request()->all();
-        // return request('titulo');
-        // return request()->contenido;
 
 
     }
