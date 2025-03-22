@@ -32,14 +32,16 @@ class StorePostRequest extends FormRequest
     public function messages(){
 
         return[
-            'titulo.required'=>'The :attribute field is required (edited)'
+            // 'titulo.required'=>'The :attribute field is required (edited)'
         ];
     }
 
     public function attributes(){
         return [
-            'titulo'=>'Title',
-            'categoria'=>'Category'
+            // 'titulo'=>'Titulo',
+            // 'slug'=>'Slug',
+            // 'categoria'=>'Categoria',
+            // 'contenido'=>'Contenido'
         ];
     }
 }
