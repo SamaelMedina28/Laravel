@@ -45,6 +45,14 @@ class PostController extends Controller
         $posts->categoria = request()->categoria; 
         $posts->save();*/
 
+        $request->validate([
+            'titulo'=>'required|min:5|max:50',
+            'slug'=>'required|unique:posts',
+            'categoria'=>['required','min:8','max:30'],
+            'contenido'=>'required'
+        ]);
+
+
         Post::create($request->all()); // TODO Asignacion masiva (ocupa que en el modelo lo configuremos)
         return redirect()->route('posts.index');
 
@@ -72,6 +80,14 @@ class PostController extends Controller
         $posts->contenido = request('contenido');
         $posts->categoria = request()->categoria;
         $posts->save(); */
+
+        $request->validate([
+            'titulo'=>'required|min:5|max:50',
+            'slug'=>"required|unique:posts,slug,$posts->id",
+            'categoria'=>['required','min:8','max:30'],
+            'contenido'=>'required'
+        ]);
+
         $posts->update($request->all()); // TODO Actualizandolo con asignacion masiva
         return redirect()->route('posts.show',$posts);
     }
