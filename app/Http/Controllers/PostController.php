@@ -3,8 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\StorePostRequest;
+use App\Mail\PostCreatedMail;
 use App\Models\Post;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
 
 class PostController extends Controller
 {
@@ -50,7 +52,7 @@ class PostController extends Controller
         // return request()->all();
         // return request('titulo');
         // return request()->contenido;
-
+        //^Validaciones
         // $request->validate([
         //     'titulo'=>'required|min:5|max:50',
         //     'slug'=>'required|unique:posts',
@@ -58,12 +60,11 @@ class PostController extends Controller
         //     'contenido'=>'required'
         // ]);
 
+    // TODO Asignacion masiva (ocupa que en el modelo lo configuremos)
+        $post = Post::create($request->all()); 
+        Mail::to('Prueba@prueba.mx')->send(new PostCreatedMail($post));
 
-        Post::create($request->all()); // TODO Asignacion masiva (ocupa que en el modelo lo configuremos)
         return redirect()->route('posts.index');
-
-
-
     }
 
     public function edit(Post $posts){

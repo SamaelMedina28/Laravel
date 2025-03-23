@@ -24,7 +24,7 @@ class StorePostRequest extends FormRequest
         return [
             'titulo'=>'required|min:5|max:50',
             'slug'=>'required|unique:posts',
-            'categoria'=>['required','min:8','max:30'],
+            'categoria'=>['required','min:5','max:30'],
             'contenido'=>'required'
         ];
     }

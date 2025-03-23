@@ -1,5 +1,5 @@
 <x-app-layout>
-    <h1 class="bg-green-500 text-3xl text-center text-white py-3">Crear nuevo post</h1>
+    <h1 class="bg-teal-400 text-3xl text-center text-white py-3">Crear nuevo post</h1>
 
     @if ($errors->any())
         <div class="w-150 mt-4 mx-auto">
@@ -33,7 +33,7 @@
                 class="w-full border-2 border-gray-300 p-2 rounded-lg mb-3" value={{old('categoria')}}>
 
             <button type="submit"
-                class="w-full bg-green-500 text-white p-3 rounded-lg cursor-pointer hover:bg-green-600">Crear
+                class="w-full bg-teal-400 text-white p-3 rounded-lg cursor-pointer hover:bg-green-500">Crear
                 post</button>
 
         </form>

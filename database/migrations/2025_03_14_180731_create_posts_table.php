@@ -22,6 +22,8 @@ return new class extends Migration
 
             $table->string('categoria');
 
+            // $table->boolean('is_active')->default('false')
+
 
             $table->timestamps();
         });
