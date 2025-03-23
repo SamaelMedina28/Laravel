@@ -41,7 +41,7 @@ class PostCreatedMail extends Mailable
     public function content(): Content
     {
         return new Content(
-            view: 'emails.post-creado',
+            markdown:'emails.post-creado'
         );
     }
 
